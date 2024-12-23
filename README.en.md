@@ -18,7 +18,7 @@
   <a href="https://github.com/users/Calcium-Ion/packages/container/package/new-api">
     <img src="https://img.shields.io/badge/docker-ghcr.io-blue" alt="docker">
   </a>
-  <a href="https://hub.docker.com/r/CalciumIon/new-api">
+  <a href="https://hub.docker.com/r/lkeiyei5534/new-api">
     <img src="https://img.shields.io/badge/docker-dockerHub-blue" alt="docker">
   </a>
   <a href="https://goreportcard.com/report/github.com/Calcium-Ion/new-api">
@@ -85,7 +85,7 @@ You can add custom models gpt-4-gizmo-* in channels. These are third-party model
 
 ## Deployment
 > [!TIP]
-> Latest Docker image: `calciumion/new-api:latest`  
+> Latest Docker image: `lkeiyei5534/new-api:latest`  
 > Default account: root, password: 123456  
 > Update command:
 > ```
@@ -110,10 +110,10 @@ docker-compose up -d
 ### Direct Docker Image Usage
 ```shell
 # SQLite deployment:
-docker run --name new-api -d --restart always -p 3000:3000 -e TZ=Asia/Shanghai -v /home/ubuntu/data/new-api:/data calciumion/new-api:latest
+docker run --name new-api -d --restart always -p 3000:3000 -e TZ=Asia/Shanghai -v /home/ubuntu/data/new-api:/data lkeiyei5534/new-api:latest
 # MySQL deployment (add -e SQL_DSN="root:123456@tcp(localhost:3306)/oneapi"), modify database connection parameters as needed
 # Example:
-docker run --name new-api -d --restart always -p 3000:3000 -e SQL_DSN="root:123456@tcp(localhost:3306)/oneapi" -e TZ=Asia/Shanghai -v /home/ubuntu/data/new-api:/data calciumion/new-api:latest
+docker run --name new-api -d --restart always -p 3000:3000 -e SQL_DSN="root:123456@tcp(localhost:3306)/oneapi" -e TZ=Asia/Shanghai -v /home/ubuntu/data/new-api:/data lkeiyei5534/new-api:latest
 ```
 
 ## Channel Retry
