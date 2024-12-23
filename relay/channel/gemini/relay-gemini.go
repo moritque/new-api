@@ -99,16 +99,7 @@ func CovertGemini2OpenAI(textRequest dto.GeneralOpenAIRequest) (*GeminiChatReque
 	//shouldAddDummyModelMessage := false
 	for _, message := range textRequest.Messages {
 
-		if message.Role == "system" {
-			geminiRequest.SystemInstructions = &GeminiChatContent{
-				Parts: []GeminiPart{
-					{
-						Text: message.StringContent(),
-					},
-				},
-			}
-			continue
-		} else if message.Role == "tool" {
+		if message.Role == "tool" {
 			if len(geminiRequest.Contents) == 0 || geminiRequest.Contents[len(geminiRequest.Contents)-1].Role != "user" {
 				geminiRequest.Contents = append(geminiRequest.Contents, GeminiChatContent{
 					Role: "user",
@@ -194,6 +185,11 @@ func CovertGemini2OpenAI(textRequest dto.GeneralOpenAIRequest) (*GeminiChatReque
 		// there's no assistant role in gemini and API shall vomit if Role is not user or model
 		if content.Role == "assistant" {
 			content.Role = "model"
+		}
+		
+		// Converting system prompt to prompt from user for the same reason
+		if content.Role == "system" {
+			content.Role = "user"
 		}
 		geminiRequest.Contents = append(geminiRequest.Contents, content)
 	}
