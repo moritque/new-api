@@ -22,7 +22,7 @@
   <a href="https://github.com/users/Calcium-Ion/packages/container/package/new-api">
     <img src="https://img.shields.io/badge/docker-ghcr.io-blue" alt="docker">
   </a>
-  <a href="https://hub.docker.com/r/CalciumIon/new-api">
+  <a href="https://hub.docker.com/r/lkeiyei5534/new-api">
     <img src="https://img.shields.io/badge/docker-dockerHub-blue" alt="docker">
   </a>
   <a href="https://goreportcard.com/report/github.com/Calcium-Ion/new-api">
@@ -92,7 +92,7 @@
 - `CRYPTO_SECRET`：加密密钥，用于加密数据库内容。
 ## 部署
 > [!TIP]
-> 最新版Docker镜像：`calciumion/new-api:latest`  
+> 最新版Docker镜像：`lkeiyei5534/new-api:latest`  
 > 默认账号root 密码123456  
 > 更新指令：
 > ```
@@ -127,10 +127,10 @@ docker-compose up -d
 ### 直接使用 Docker 镜像
 ```shell
 # 使用 SQLite 的部署命令：
-docker run --name new-api -d --restart always -p 3000:3000 -e TZ=Asia/Shanghai -v /home/ubuntu/data/new-api:/data calciumion/new-api:latest
+docker run --name new-api -d --restart always -p 3000:3000 -e TZ=Asia/Shanghai -v /home/ubuntu/data/new-api:/data lkeiyei5534/new-api:latest
 # 使用 MySQL 的部署命令，在上面的基础上添加 `-e SQL_DSN="root:123456@tcp(localhost:3306)/oneapi"`，请自行修改数据库连接参数。
 # 例如：
-docker run --name new-api -d --restart always -p 3000:3000 -e SQL_DSN="root:123456@tcp(localhost:3306)/oneapi" -e TZ=Asia/Shanghai -v /home/ubuntu/data/new-api:/data calciumion/new-api:latest
+docker run --name new-api -d --restart always -p 3000:3000 -e SQL_DSN="root:123456@tcp(localhost:3306)/oneapi" -e TZ=Asia/Shanghai -v /home/ubuntu/data/new-api:/data lkeiyei5534/new-api:latest
 ```
 
 ## 渠道重试
