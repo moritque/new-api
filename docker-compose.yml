@@ -39,7 +39,7 @@ services:
     container_name: mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 123456 # Ensure this matches the password in SQL_DSN
+      MYSQL_ROOT_PASSWORD: 123456  # Ensure this matches the password in SQL_DSN
       MYSQL_DATABASE: new-api
     volumes:
       - mysql_data:/var/lib/mysql
