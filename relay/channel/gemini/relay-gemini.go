@@ -49,6 +49,7 @@ func CovertGemini2OpenAI(textRequest dto.GeneralOpenAIRequest) (*GeminiChatReque
 			TopP:            textRequest.TopP,
 			MaxOutputTokens: textRequest.MaxTokens,
 			Seed:            int64(textRequest.Seed),
+			TopK:            float64(textRequest.TopK),
 		},
 	}
 
