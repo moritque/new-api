@@ -1,11 +1,11 @@
-FROM oven/bun:latest AS builder
+FROM node:18 as builder
 
 WORKDIR /build
 COPY web/package.json .
-RUN bun install
+RUN npm install
 COPY ./web .
 COPY ./VERSION .
-RUN DISABLE_ESLINT_PLUGIN='true' VITE_REACT_APP_VERSION=$(cat VERSION) bun run build
+RUN DISABLE_ESLINT_PLUGIN='true' VITE_REACT_APP_VERSION=$(cat VERSION) npm run build
 
 FROM golang:alpine AS builder2
 
@@ -26,8 +26,8 @@ FROM alpine
 
 RUN apk update \
     && apk upgrade \
-    && apk add --no-cache ca-certificates tzdata ffmpeg \
-    && update-ca-certificates
+    && apk add --no-cache ca-certificates tzdata \
+    && update-ca-certificates 2>/dev/null || true
 
 COPY --from=builder2 /build/one-api /
 EXPOSE 3000
